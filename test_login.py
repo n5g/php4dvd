@@ -6,15 +6,15 @@ def logout(driver):
     driver.find_element_by_link_text("Log out").click()
     driver.switch_to.alert.accept()
 
-def login(driver):
+def login(driver, username, password):
     driver.find_element_by_id("username").clear()
-    driver.find_element_by_id("username").send_keys("admin")
+    driver.find_element_by_id("username").send_keys(username)
     driver.find_element_by_name("password").clear()
-    driver.find_element_by_name("password").send_keys("admin")
+    driver.find_element_by_name("password").send_keys(password)
     driver.find_element_by_name("submit").click()
 
 def test_login(driver):
     driver.get("http://localhost/php4dvd/")
-    login(driver)
+    login(driver, "admin", "admin")
     logout(driver)
-   
+
